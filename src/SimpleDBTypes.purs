@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -21,9 +20,9 @@ options = defaultOptions { unwrapSingleConstructors = true }
 -- | <p></p>
 newtype Attribute = Attribute 
   { "Name" :: (String)
-  , "AlternateNameEncoding" :: NullOrUndefined (String)
+  , "AlternateNameEncoding" :: Maybe (String)
   , "Value" :: (String)
-  , "AlternateValueEncoding" :: NullOrUndefined (String)
+  , "AlternateValueEncoding" :: Maybe (String)
   }
 derive instance newtypeAttribute :: Newtype Attribute _
 derive instance repGenericAttribute :: Generic Attribute _
@@ -33,18 +32,18 @@ instance encodeAttribute :: Encode Attribute where encode = genericEncode option
 
 -- | Constructs Attribute from required parameters
 newAttribute :: String -> String -> Attribute
-newAttribute _Name _Value = Attribute { "Name": _Name, "Value": _Value, "AlternateNameEncoding": (NullOrUndefined Nothing), "AlternateValueEncoding": (NullOrUndefined Nothing) }
+newAttribute _Name _Value = Attribute { "Name": _Name, "Value": _Value, "AlternateNameEncoding": Nothing, "AlternateValueEncoding": Nothing }
 
 -- | Constructs Attribute's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAttribute' :: String -> String -> ( { "Name" :: (String) , "AlternateNameEncoding" :: NullOrUndefined (String) , "Value" :: (String) , "AlternateValueEncoding" :: NullOrUndefined (String) } -> {"Name" :: (String) , "AlternateNameEncoding" :: NullOrUndefined (String) , "Value" :: (String) , "AlternateValueEncoding" :: NullOrUndefined (String) } ) -> Attribute
-newAttribute' _Name _Value customize = (Attribute <<< customize) { "Name": _Name, "Value": _Value, "AlternateNameEncoding": (NullOrUndefined Nothing), "AlternateValueEncoding": (NullOrUndefined Nothing) }
+newAttribute' :: String -> String -> ( { "Name" :: (String) , "AlternateNameEncoding" :: Maybe (String) , "Value" :: (String) , "AlternateValueEncoding" :: Maybe (String) } -> {"Name" :: (String) , "AlternateNameEncoding" :: Maybe (String) , "Value" :: (String) , "AlternateValueEncoding" :: Maybe (String) } ) -> Attribute
+newAttribute' _Name _Value customize = (Attribute <<< customize) { "Name": _Name, "Value": _Value, "AlternateNameEncoding": Nothing, "AlternateValueEncoding": Nothing }
 
 
 
 -- | <p>The specified attribute does not exist.</p>
 newtype AttributeDoesNotExist = AttributeDoesNotExist 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeAttributeDoesNotExist :: Newtype AttributeDoesNotExist _
 derive instance repGenericAttributeDoesNotExist :: Generic AttributeDoesNotExist _
@@ -54,12 +53,12 @@ instance encodeAttributeDoesNotExist :: Encode AttributeDoesNotExist where encod
 
 -- | Constructs AttributeDoesNotExist from required parameters
 newAttributeDoesNotExist :: AttributeDoesNotExist
-newAttributeDoesNotExist  = AttributeDoesNotExist { "BoxUsage": (NullOrUndefined Nothing) }
+newAttributeDoesNotExist  = AttributeDoesNotExist { "BoxUsage": Nothing }
 
 -- | Constructs AttributeDoesNotExist's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAttributeDoesNotExist' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> AttributeDoesNotExist
-newAttributeDoesNotExist'  customize = (AttributeDoesNotExist <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newAttributeDoesNotExist' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> AttributeDoesNotExist
+newAttributeDoesNotExist'  customize = (AttributeDoesNotExist <<< customize) { "BoxUsage": Nothing }
 
 
 
@@ -146,7 +145,7 @@ newCreateDomainRequest' _DomainName customize = (CreateDomainRequest <<< customi
 -- | <p></p>
 newtype DeletableAttribute = DeletableAttribute 
   { "Name" :: (String)
-  , "Value" :: NullOrUndefined (String)
+  , "Value" :: Maybe (String)
   }
 derive instance newtypeDeletableAttribute :: Newtype DeletableAttribute _
 derive instance repGenericDeletableAttribute :: Generic DeletableAttribute _
@@ -156,12 +155,12 @@ instance encodeDeletableAttribute :: Encode DeletableAttribute where encode = ge
 
 -- | Constructs DeletableAttribute from required parameters
 newDeletableAttribute :: String -> DeletableAttribute
-newDeletableAttribute _Name = DeletableAttribute { "Name": _Name, "Value": (NullOrUndefined Nothing) }
+newDeletableAttribute _Name = DeletableAttribute { "Name": _Name, "Value": Nothing }
 
 -- | Constructs DeletableAttribute's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeletableAttribute' :: String -> ( { "Name" :: (String) , "Value" :: NullOrUndefined (String) } -> {"Name" :: (String) , "Value" :: NullOrUndefined (String) } ) -> DeletableAttribute
-newDeletableAttribute' _Name customize = (DeletableAttribute <<< customize) { "Name": _Name, "Value": (NullOrUndefined Nothing) }
+newDeletableAttribute' :: String -> ( { "Name" :: (String) , "Value" :: Maybe (String) } -> {"Name" :: (String) , "Value" :: Maybe (String) } ) -> DeletableAttribute
+newDeletableAttribute' _Name customize = (DeletableAttribute <<< customize) { "Name": _Name, "Value": Nothing }
 
 
 
@@ -176,7 +175,7 @@ instance encodeDeletableAttributeList :: Encode DeletableAttributeList where enc
 
 newtype DeletableItem = DeletableItem 
   { "Name" :: (String)
-  , "Attributes" :: NullOrUndefined (DeletableAttributeList)
+  , "Attributes" :: Maybe (DeletableAttributeList)
   }
 derive instance newtypeDeletableItem :: Newtype DeletableItem _
 derive instance repGenericDeletableItem :: Generic DeletableItem _
@@ -186,12 +185,12 @@ instance encodeDeletableItem :: Encode DeletableItem where encode = genericEncod
 
 -- | Constructs DeletableItem from required parameters
 newDeletableItem :: String -> DeletableItem
-newDeletableItem _Name = DeletableItem { "Name": _Name, "Attributes": (NullOrUndefined Nothing) }
+newDeletableItem _Name = DeletableItem { "Name": _Name, "Attributes": Nothing }
 
 -- | Constructs DeletableItem's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeletableItem' :: String -> ( { "Name" :: (String) , "Attributes" :: NullOrUndefined (DeletableAttributeList) } -> {"Name" :: (String) , "Attributes" :: NullOrUndefined (DeletableAttributeList) } ) -> DeletableItem
-newDeletableItem' _Name customize = (DeletableItem <<< customize) { "Name": _Name, "Attributes": (NullOrUndefined Nothing) }
+newDeletableItem' :: String -> ( { "Name" :: (String) , "Attributes" :: Maybe (DeletableAttributeList) } -> {"Name" :: (String) , "Attributes" :: Maybe (DeletableAttributeList) } ) -> DeletableItem
+newDeletableItem' _Name customize = (DeletableItem <<< customize) { "Name": _Name, "Attributes": Nothing }
 
 
 
@@ -207,8 +206,8 @@ instance encodeDeletableItemList :: Encode DeletableItemList where encode = gene
 newtype DeleteAttributesRequest = DeleteAttributesRequest 
   { "DomainName" :: (String)
   , "ItemName" :: (String)
-  , "Attributes" :: NullOrUndefined (DeletableAttributeList)
-  , "Expected" :: NullOrUndefined (UpdateCondition)
+  , "Attributes" :: Maybe (DeletableAttributeList)
+  , "Expected" :: Maybe (UpdateCondition)
   }
 derive instance newtypeDeleteAttributesRequest :: Newtype DeleteAttributesRequest _
 derive instance repGenericDeleteAttributesRequest :: Generic DeleteAttributesRequest _
@@ -218,12 +217,12 @@ instance encodeDeleteAttributesRequest :: Encode DeleteAttributesRequest where e
 
 -- | Constructs DeleteAttributesRequest from required parameters
 newDeleteAttributesRequest :: String -> String -> DeleteAttributesRequest
-newDeleteAttributesRequest _DomainName _ItemName = DeleteAttributesRequest { "DomainName": _DomainName, "ItemName": _ItemName, "Attributes": (NullOrUndefined Nothing), "Expected": (NullOrUndefined Nothing) }
+newDeleteAttributesRequest _DomainName _ItemName = DeleteAttributesRequest { "DomainName": _DomainName, "ItemName": _ItemName, "Attributes": Nothing, "Expected": Nothing }
 
 -- | Constructs DeleteAttributesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteAttributesRequest' :: String -> String -> ( { "DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: NullOrUndefined (DeletableAttributeList) , "Expected" :: NullOrUndefined (UpdateCondition) } -> {"DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: NullOrUndefined (DeletableAttributeList) , "Expected" :: NullOrUndefined (UpdateCondition) } ) -> DeleteAttributesRequest
-newDeleteAttributesRequest' _DomainName _ItemName customize = (DeleteAttributesRequest <<< customize) { "DomainName": _DomainName, "ItemName": _ItemName, "Attributes": (NullOrUndefined Nothing), "Expected": (NullOrUndefined Nothing) }
+newDeleteAttributesRequest' :: String -> String -> ( { "DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: Maybe (DeletableAttributeList) , "Expected" :: Maybe (UpdateCondition) } -> {"DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: Maybe (DeletableAttributeList) , "Expected" :: Maybe (UpdateCondition) } ) -> DeleteAttributesRequest
+newDeleteAttributesRequest' _DomainName _ItemName customize = (DeleteAttributesRequest <<< customize) { "DomainName": _DomainName, "ItemName": _ItemName, "Attributes": Nothing, "Expected": Nothing }
 
 
 
@@ -268,13 +267,13 @@ newDomainMetadataRequest' _DomainName customize = (DomainMetadataRequest <<< cus
 
 
 newtype DomainMetadataResult = DomainMetadataResult 
-  { "ItemCount" :: NullOrUndefined (Int)
-  , "ItemNamesSizeBytes" :: NullOrUndefined (Number)
-  , "AttributeNameCount" :: NullOrUndefined (Int)
-  , "AttributeNamesSizeBytes" :: NullOrUndefined (Number)
-  , "AttributeValueCount" :: NullOrUndefined (Int)
-  , "AttributeValuesSizeBytes" :: NullOrUndefined (Number)
-  , "Timestamp" :: NullOrUndefined (Int)
+  { "ItemCount" :: Maybe (Int)
+  , "ItemNamesSizeBytes" :: Maybe (Number)
+  , "AttributeNameCount" :: Maybe (Int)
+  , "AttributeNamesSizeBytes" :: Maybe (Number)
+  , "AttributeValueCount" :: Maybe (Int)
+  , "AttributeValuesSizeBytes" :: Maybe (Number)
+  , "Timestamp" :: Maybe (Int)
   }
 derive instance newtypeDomainMetadataResult :: Newtype DomainMetadataResult _
 derive instance repGenericDomainMetadataResult :: Generic DomainMetadataResult _
@@ -284,12 +283,12 @@ instance encodeDomainMetadataResult :: Encode DomainMetadataResult where encode 
 
 -- | Constructs DomainMetadataResult from required parameters
 newDomainMetadataResult :: DomainMetadataResult
-newDomainMetadataResult  = DomainMetadataResult { "AttributeNameCount": (NullOrUndefined Nothing), "AttributeNamesSizeBytes": (NullOrUndefined Nothing), "AttributeValueCount": (NullOrUndefined Nothing), "AttributeValuesSizeBytes": (NullOrUndefined Nothing), "ItemCount": (NullOrUndefined Nothing), "ItemNamesSizeBytes": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newDomainMetadataResult  = DomainMetadataResult { "AttributeNameCount": Nothing, "AttributeNamesSizeBytes": Nothing, "AttributeValueCount": Nothing, "AttributeValuesSizeBytes": Nothing, "ItemCount": Nothing, "ItemNamesSizeBytes": Nothing, "Timestamp": Nothing }
 
 -- | Constructs DomainMetadataResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDomainMetadataResult' :: ( { "ItemCount" :: NullOrUndefined (Int) , "ItemNamesSizeBytes" :: NullOrUndefined (Number) , "AttributeNameCount" :: NullOrUndefined (Int) , "AttributeNamesSizeBytes" :: NullOrUndefined (Number) , "AttributeValueCount" :: NullOrUndefined (Int) , "AttributeValuesSizeBytes" :: NullOrUndefined (Number) , "Timestamp" :: NullOrUndefined (Int) } -> {"ItemCount" :: NullOrUndefined (Int) , "ItemNamesSizeBytes" :: NullOrUndefined (Number) , "AttributeNameCount" :: NullOrUndefined (Int) , "AttributeNamesSizeBytes" :: NullOrUndefined (Number) , "AttributeValueCount" :: NullOrUndefined (Int) , "AttributeValuesSizeBytes" :: NullOrUndefined (Number) , "Timestamp" :: NullOrUndefined (Int) } ) -> DomainMetadataResult
-newDomainMetadataResult'  customize = (DomainMetadataResult <<< customize) { "AttributeNameCount": (NullOrUndefined Nothing), "AttributeNamesSizeBytes": (NullOrUndefined Nothing), "AttributeValueCount": (NullOrUndefined Nothing), "AttributeValuesSizeBytes": (NullOrUndefined Nothing), "ItemCount": (NullOrUndefined Nothing), "ItemNamesSizeBytes": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newDomainMetadataResult' :: ( { "ItemCount" :: Maybe (Int) , "ItemNamesSizeBytes" :: Maybe (Number) , "AttributeNameCount" :: Maybe (Int) , "AttributeNamesSizeBytes" :: Maybe (Number) , "AttributeValueCount" :: Maybe (Int) , "AttributeValuesSizeBytes" :: Maybe (Number) , "Timestamp" :: Maybe (Int) } -> {"ItemCount" :: Maybe (Int) , "ItemNamesSizeBytes" :: Maybe (Number) , "AttributeNameCount" :: Maybe (Int) , "AttributeNamesSizeBytes" :: Maybe (Number) , "AttributeValueCount" :: Maybe (Int) , "AttributeValuesSizeBytes" :: Maybe (Number) , "Timestamp" :: Maybe (Int) } ) -> DomainMetadataResult
+newDomainMetadataResult'  customize = (DomainMetadataResult <<< customize) { "AttributeNameCount": Nothing, "AttributeNamesSizeBytes": Nothing, "AttributeValueCount": Nothing, "AttributeValuesSizeBytes": Nothing, "ItemCount": Nothing, "ItemNamesSizeBytes": Nothing, "Timestamp": Nothing }
 
 
 
@@ -304,7 +303,7 @@ instance encodeDomainNameList :: Encode DomainNameList where encode = genericEnc
 
 -- | <p>The item name was specified more than once. </p>
 newtype DuplicateItemName = DuplicateItemName 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeDuplicateItemName :: Newtype DuplicateItemName _
 derive instance repGenericDuplicateItemName :: Generic DuplicateItemName _
@@ -314,20 +313,20 @@ instance encodeDuplicateItemName :: Encode DuplicateItemName where encode = gene
 
 -- | Constructs DuplicateItemName from required parameters
 newDuplicateItemName :: DuplicateItemName
-newDuplicateItemName  = DuplicateItemName { "BoxUsage": (NullOrUndefined Nothing) }
+newDuplicateItemName  = DuplicateItemName { "BoxUsage": Nothing }
 
 -- | Constructs DuplicateItemName's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDuplicateItemName' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> DuplicateItemName
-newDuplicateItemName'  customize = (DuplicateItemName <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newDuplicateItemName' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> DuplicateItemName
+newDuplicateItemName'  customize = (DuplicateItemName <<< customize) { "BoxUsage": Nothing }
 
 
 
 newtype GetAttributesRequest = GetAttributesRequest 
   { "DomainName" :: (String)
   , "ItemName" :: (String)
-  , "AttributeNames" :: NullOrUndefined (AttributeNameList)
-  , "ConsistentRead" :: NullOrUndefined (Boolean)
+  , "AttributeNames" :: Maybe (AttributeNameList)
+  , "ConsistentRead" :: Maybe (Boolean)
   }
 derive instance newtypeGetAttributesRequest :: Newtype GetAttributesRequest _
 derive instance repGenericGetAttributesRequest :: Generic GetAttributesRequest _
@@ -337,17 +336,17 @@ instance encodeGetAttributesRequest :: Encode GetAttributesRequest where encode 
 
 -- | Constructs GetAttributesRequest from required parameters
 newGetAttributesRequest :: String -> String -> GetAttributesRequest
-newGetAttributesRequest _DomainName _ItemName = GetAttributesRequest { "DomainName": _DomainName, "ItemName": _ItemName, "AttributeNames": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing) }
+newGetAttributesRequest _DomainName _ItemName = GetAttributesRequest { "DomainName": _DomainName, "ItemName": _ItemName, "AttributeNames": Nothing, "ConsistentRead": Nothing }
 
 -- | Constructs GetAttributesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetAttributesRequest' :: String -> String -> ( { "DomainName" :: (String) , "ItemName" :: (String) , "AttributeNames" :: NullOrUndefined (AttributeNameList) , "ConsistentRead" :: NullOrUndefined (Boolean) } -> {"DomainName" :: (String) , "ItemName" :: (String) , "AttributeNames" :: NullOrUndefined (AttributeNameList) , "ConsistentRead" :: NullOrUndefined (Boolean) } ) -> GetAttributesRequest
-newGetAttributesRequest' _DomainName _ItemName customize = (GetAttributesRequest <<< customize) { "DomainName": _DomainName, "ItemName": _ItemName, "AttributeNames": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing) }
+newGetAttributesRequest' :: String -> String -> ( { "DomainName" :: (String) , "ItemName" :: (String) , "AttributeNames" :: Maybe (AttributeNameList) , "ConsistentRead" :: Maybe (Boolean) } -> {"DomainName" :: (String) , "ItemName" :: (String) , "AttributeNames" :: Maybe (AttributeNameList) , "ConsistentRead" :: Maybe (Boolean) } ) -> GetAttributesRequest
+newGetAttributesRequest' _DomainName _ItemName customize = (GetAttributesRequest <<< customize) { "DomainName": _DomainName, "ItemName": _ItemName, "AttributeNames": Nothing, "ConsistentRead": Nothing }
 
 
 
 newtype GetAttributesResult = GetAttributesResult 
-  { "Attributes" :: NullOrUndefined (AttributeList)
+  { "Attributes" :: Maybe (AttributeList)
   }
 derive instance newtypeGetAttributesResult :: Newtype GetAttributesResult _
 derive instance repGenericGetAttributesResult :: Generic GetAttributesResult _
@@ -357,18 +356,18 @@ instance encodeGetAttributesResult :: Encode GetAttributesResult where encode = 
 
 -- | Constructs GetAttributesResult from required parameters
 newGetAttributesResult :: GetAttributesResult
-newGetAttributesResult  = GetAttributesResult { "Attributes": (NullOrUndefined Nothing) }
+newGetAttributesResult  = GetAttributesResult { "Attributes": Nothing }
 
 -- | Constructs GetAttributesResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetAttributesResult' :: ( { "Attributes" :: NullOrUndefined (AttributeList) } -> {"Attributes" :: NullOrUndefined (AttributeList) } ) -> GetAttributesResult
-newGetAttributesResult'  customize = (GetAttributesResult <<< customize) { "Attributes": (NullOrUndefined Nothing) }
+newGetAttributesResult' :: ( { "Attributes" :: Maybe (AttributeList) } -> {"Attributes" :: Maybe (AttributeList) } ) -> GetAttributesResult
+newGetAttributesResult'  customize = (GetAttributesResult <<< customize) { "Attributes": Nothing }
 
 
 
 -- | <p>The specified NextToken is not valid. </p>
 newtype InvalidNextToken = InvalidNextToken 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeInvalidNextToken :: Newtype InvalidNextToken _
 derive instance repGenericInvalidNextToken :: Generic InvalidNextToken _
@@ -378,18 +377,18 @@ instance encodeInvalidNextToken :: Encode InvalidNextToken where encode = generi
 
 -- | Constructs InvalidNextToken from required parameters
 newInvalidNextToken :: InvalidNextToken
-newInvalidNextToken  = InvalidNextToken { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidNextToken  = InvalidNextToken { "BoxUsage": Nothing }
 
 -- | Constructs InvalidNextToken's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidNextToken' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> InvalidNextToken
-newInvalidNextToken'  customize = (InvalidNextToken <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidNextToken' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> InvalidNextToken
+newInvalidNextToken'  customize = (InvalidNextToken <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many predicates exist in the query expression.</p>
 newtype InvalidNumberPredicates = InvalidNumberPredicates 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeInvalidNumberPredicates :: Newtype InvalidNumberPredicates _
 derive instance repGenericInvalidNumberPredicates :: Generic InvalidNumberPredicates _
@@ -399,18 +398,18 @@ instance encodeInvalidNumberPredicates :: Encode InvalidNumberPredicates where e
 
 -- | Constructs InvalidNumberPredicates from required parameters
 newInvalidNumberPredicates :: InvalidNumberPredicates
-newInvalidNumberPredicates  = InvalidNumberPredicates { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidNumberPredicates  = InvalidNumberPredicates { "BoxUsage": Nothing }
 
 -- | Constructs InvalidNumberPredicates's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidNumberPredicates' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> InvalidNumberPredicates
-newInvalidNumberPredicates'  customize = (InvalidNumberPredicates <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidNumberPredicates' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> InvalidNumberPredicates
+newInvalidNumberPredicates'  customize = (InvalidNumberPredicates <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many predicates exist in the query expression.</p>
 newtype InvalidNumberValueTests = InvalidNumberValueTests 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeInvalidNumberValueTests :: Newtype InvalidNumberValueTests _
 derive instance repGenericInvalidNumberValueTests :: Generic InvalidNumberValueTests _
@@ -420,18 +419,18 @@ instance encodeInvalidNumberValueTests :: Encode InvalidNumberValueTests where e
 
 -- | Constructs InvalidNumberValueTests from required parameters
 newInvalidNumberValueTests :: InvalidNumberValueTests
-newInvalidNumberValueTests  = InvalidNumberValueTests { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidNumberValueTests  = InvalidNumberValueTests { "BoxUsage": Nothing }
 
 -- | Constructs InvalidNumberValueTests's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidNumberValueTests' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> InvalidNumberValueTests
-newInvalidNumberValueTests'  customize = (InvalidNumberValueTests <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidNumberValueTests' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> InvalidNumberValueTests
+newInvalidNumberValueTests'  customize = (InvalidNumberValueTests <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>The value for a parameter is invalid.</p>
 newtype InvalidParameterValue = InvalidParameterValue 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeInvalidParameterValue :: Newtype InvalidParameterValue _
 derive instance repGenericInvalidParameterValue :: Generic InvalidParameterValue _
@@ -441,18 +440,18 @@ instance encodeInvalidParameterValue :: Encode InvalidParameterValue where encod
 
 -- | Constructs InvalidParameterValue from required parameters
 newInvalidParameterValue :: InvalidParameterValue
-newInvalidParameterValue  = InvalidParameterValue { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidParameterValue  = InvalidParameterValue { "BoxUsage": Nothing }
 
 -- | Constructs InvalidParameterValue's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidParameterValue' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> InvalidParameterValue
-newInvalidParameterValue'  customize = (InvalidParameterValue <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidParameterValue' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> InvalidParameterValue
+newInvalidParameterValue'  customize = (InvalidParameterValue <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>The specified query expression syntax is not valid.</p>
 newtype InvalidQueryExpression = InvalidQueryExpression 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeInvalidQueryExpression :: Newtype InvalidQueryExpression _
 derive instance repGenericInvalidQueryExpression :: Generic InvalidQueryExpression _
@@ -462,19 +461,19 @@ instance encodeInvalidQueryExpression :: Encode InvalidQueryExpression where enc
 
 -- | Constructs InvalidQueryExpression from required parameters
 newInvalidQueryExpression :: InvalidQueryExpression
-newInvalidQueryExpression  = InvalidQueryExpression { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidQueryExpression  = InvalidQueryExpression { "BoxUsage": Nothing }
 
 -- | Constructs InvalidQueryExpression's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidQueryExpression' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> InvalidQueryExpression
-newInvalidQueryExpression'  customize = (InvalidQueryExpression <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newInvalidQueryExpression' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> InvalidQueryExpression
+newInvalidQueryExpression'  customize = (InvalidQueryExpression <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p></p>
 newtype Item = Item 
   { "Name" :: (String)
-  , "AlternateNameEncoding" :: NullOrUndefined (String)
+  , "AlternateNameEncoding" :: Maybe (String)
   , "Attributes" :: (AttributeList)
   }
 derive instance newtypeItem :: Newtype Item _
@@ -485,12 +484,12 @@ instance encodeItem :: Encode Item where encode = genericEncode options
 
 -- | Constructs Item from required parameters
 newItem :: AttributeList -> String -> Item
-newItem _Attributes _Name = Item { "Attributes": _Attributes, "Name": _Name, "AlternateNameEncoding": (NullOrUndefined Nothing) }
+newItem _Attributes _Name = Item { "Attributes": _Attributes, "Name": _Name, "AlternateNameEncoding": Nothing }
 
 -- | Constructs Item's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newItem' :: AttributeList -> String -> ( { "Name" :: (String) , "AlternateNameEncoding" :: NullOrUndefined (String) , "Attributes" :: (AttributeList) } -> {"Name" :: (String) , "AlternateNameEncoding" :: NullOrUndefined (String) , "Attributes" :: (AttributeList) } ) -> Item
-newItem' _Attributes _Name customize = (Item <<< customize) { "Attributes": _Attributes, "Name": _Name, "AlternateNameEncoding": (NullOrUndefined Nothing) }
+newItem' :: AttributeList -> String -> ( { "Name" :: (String) , "AlternateNameEncoding" :: Maybe (String) , "Attributes" :: (AttributeList) } -> {"Name" :: (String) , "AlternateNameEncoding" :: Maybe (String) , "Attributes" :: (AttributeList) } ) -> Item
+newItem' _Attributes _Name customize = (Item <<< customize) { "Attributes": _Attributes, "Name": _Name, "AlternateNameEncoding": Nothing }
 
 
 
@@ -504,8 +503,8 @@ instance encodeItemList :: Encode ItemList where encode = genericEncode options
 
 
 newtype ListDomainsRequest = ListDomainsRequest 
-  { "MaxNumberOfDomains" :: NullOrUndefined (Int)
-  , "NextToken" :: NullOrUndefined (String)
+  { "MaxNumberOfDomains" :: Maybe (Int)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeListDomainsRequest :: Newtype ListDomainsRequest _
 derive instance repGenericListDomainsRequest :: Generic ListDomainsRequest _
@@ -515,18 +514,18 @@ instance encodeListDomainsRequest :: Encode ListDomainsRequest where encode = ge
 
 -- | Constructs ListDomainsRequest from required parameters
 newListDomainsRequest :: ListDomainsRequest
-newListDomainsRequest  = ListDomainsRequest { "MaxNumberOfDomains": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListDomainsRequest  = ListDomainsRequest { "MaxNumberOfDomains": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListDomainsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListDomainsRequest' :: ( { "MaxNumberOfDomains" :: NullOrUndefined (Int) , "NextToken" :: NullOrUndefined (String) } -> {"MaxNumberOfDomains" :: NullOrUndefined (Int) , "NextToken" :: NullOrUndefined (String) } ) -> ListDomainsRequest
-newListDomainsRequest'  customize = (ListDomainsRequest <<< customize) { "MaxNumberOfDomains": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListDomainsRequest' :: ( { "MaxNumberOfDomains" :: Maybe (Int) , "NextToken" :: Maybe (String) } -> {"MaxNumberOfDomains" :: Maybe (Int) , "NextToken" :: Maybe (String) } ) -> ListDomainsRequest
+newListDomainsRequest'  customize = (ListDomainsRequest <<< customize) { "MaxNumberOfDomains": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListDomainsResult = ListDomainsResult 
-  { "DomainNames" :: NullOrUndefined (DomainNameList)
-  , "NextToken" :: NullOrUndefined (String)
+  { "DomainNames" :: Maybe (DomainNameList)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeListDomainsResult :: Newtype ListDomainsResult _
 derive instance repGenericListDomainsResult :: Generic ListDomainsResult _
@@ -536,18 +535,18 @@ instance encodeListDomainsResult :: Encode ListDomainsResult where encode = gene
 
 -- | Constructs ListDomainsResult from required parameters
 newListDomainsResult :: ListDomainsResult
-newListDomainsResult  = ListDomainsResult { "DomainNames": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListDomainsResult  = ListDomainsResult { "DomainNames": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListDomainsResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListDomainsResult' :: ( { "DomainNames" :: NullOrUndefined (DomainNameList) , "NextToken" :: NullOrUndefined (String) } -> {"DomainNames" :: NullOrUndefined (DomainNameList) , "NextToken" :: NullOrUndefined (String) } ) -> ListDomainsResult
-newListDomainsResult'  customize = (ListDomainsResult <<< customize) { "DomainNames": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListDomainsResult' :: ( { "DomainNames" :: Maybe (DomainNameList) , "NextToken" :: Maybe (String) } -> {"DomainNames" :: Maybe (DomainNameList) , "NextToken" :: Maybe (String) } ) -> ListDomainsResult
+newListDomainsResult'  customize = (ListDomainsResult <<< customize) { "DomainNames": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>The request must contain the specified missing parameter.</p>
 newtype MissingParameter = MissingParameter 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeMissingParameter :: Newtype MissingParameter _
 derive instance repGenericMissingParameter :: Generic MissingParameter _
@@ -557,18 +556,18 @@ instance encodeMissingParameter :: Encode MissingParameter where encode = generi
 
 -- | Constructs MissingParameter from required parameters
 newMissingParameter :: MissingParameter
-newMissingParameter  = MissingParameter { "BoxUsage": (NullOrUndefined Nothing) }
+newMissingParameter  = MissingParameter { "BoxUsage": Nothing }
 
 -- | Constructs MissingParameter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMissingParameter' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> MissingParameter
-newMissingParameter'  customize = (MissingParameter <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newMissingParameter' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> MissingParameter
+newMissingParameter'  customize = (MissingParameter <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>The specified domain does not exist.</p>
 newtype NoSuchDomain = NoSuchDomain 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNoSuchDomain :: Newtype NoSuchDomain _
 derive instance repGenericNoSuchDomain :: Generic NoSuchDomain _
@@ -578,18 +577,18 @@ instance encodeNoSuchDomain :: Encode NoSuchDomain where encode = genericEncode 
 
 -- | Constructs NoSuchDomain from required parameters
 newNoSuchDomain :: NoSuchDomain
-newNoSuchDomain  = NoSuchDomain { "BoxUsage": (NullOrUndefined Nothing) }
+newNoSuchDomain  = NoSuchDomain { "BoxUsage": Nothing }
 
 -- | Constructs NoSuchDomain's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNoSuchDomain' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NoSuchDomain
-newNoSuchDomain'  customize = (NoSuchDomain <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNoSuchDomain' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NoSuchDomain
+newNoSuchDomain'  customize = (NoSuchDomain <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many attributes in this domain.</p>
 newtype NumberDomainAttributesExceeded = NumberDomainAttributesExceeded 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNumberDomainAttributesExceeded :: Newtype NumberDomainAttributesExceeded _
 derive instance repGenericNumberDomainAttributesExceeded :: Generic NumberDomainAttributesExceeded _
@@ -599,18 +598,18 @@ instance encodeNumberDomainAttributesExceeded :: Encode NumberDomainAttributesEx
 
 -- | Constructs NumberDomainAttributesExceeded from required parameters
 newNumberDomainAttributesExceeded :: NumberDomainAttributesExceeded
-newNumberDomainAttributesExceeded  = NumberDomainAttributesExceeded { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberDomainAttributesExceeded  = NumberDomainAttributesExceeded { "BoxUsage": Nothing }
 
 -- | Constructs NumberDomainAttributesExceeded's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNumberDomainAttributesExceeded' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NumberDomainAttributesExceeded
-newNumberDomainAttributesExceeded'  customize = (NumberDomainAttributesExceeded <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberDomainAttributesExceeded' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NumberDomainAttributesExceeded
+newNumberDomainAttributesExceeded'  customize = (NumberDomainAttributesExceeded <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many bytes in this domain.</p>
 newtype NumberDomainBytesExceeded = NumberDomainBytesExceeded 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNumberDomainBytesExceeded :: Newtype NumberDomainBytesExceeded _
 derive instance repGenericNumberDomainBytesExceeded :: Generic NumberDomainBytesExceeded _
@@ -620,18 +619,18 @@ instance encodeNumberDomainBytesExceeded :: Encode NumberDomainBytesExceeded whe
 
 -- | Constructs NumberDomainBytesExceeded from required parameters
 newNumberDomainBytesExceeded :: NumberDomainBytesExceeded
-newNumberDomainBytesExceeded  = NumberDomainBytesExceeded { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberDomainBytesExceeded  = NumberDomainBytesExceeded { "BoxUsage": Nothing }
 
 -- | Constructs NumberDomainBytesExceeded's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNumberDomainBytesExceeded' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NumberDomainBytesExceeded
-newNumberDomainBytesExceeded'  customize = (NumberDomainBytesExceeded <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberDomainBytesExceeded' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NumberDomainBytesExceeded
+newNumberDomainBytesExceeded'  customize = (NumberDomainBytesExceeded <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many domains exist per this account.</p>
 newtype NumberDomainsExceeded = NumberDomainsExceeded 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNumberDomainsExceeded :: Newtype NumberDomainsExceeded _
 derive instance repGenericNumberDomainsExceeded :: Generic NumberDomainsExceeded _
@@ -641,18 +640,18 @@ instance encodeNumberDomainsExceeded :: Encode NumberDomainsExceeded where encod
 
 -- | Constructs NumberDomainsExceeded from required parameters
 newNumberDomainsExceeded :: NumberDomainsExceeded
-newNumberDomainsExceeded  = NumberDomainsExceeded { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberDomainsExceeded  = NumberDomainsExceeded { "BoxUsage": Nothing }
 
 -- | Constructs NumberDomainsExceeded's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNumberDomainsExceeded' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NumberDomainsExceeded
-newNumberDomainsExceeded'  customize = (NumberDomainsExceeded <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberDomainsExceeded' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NumberDomainsExceeded
+newNumberDomainsExceeded'  customize = (NumberDomainsExceeded <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many attributes in this item.</p>
 newtype NumberItemAttributesExceeded = NumberItemAttributesExceeded 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNumberItemAttributesExceeded :: Newtype NumberItemAttributesExceeded _
 derive instance repGenericNumberItemAttributesExceeded :: Generic NumberItemAttributesExceeded _
@@ -662,18 +661,18 @@ instance encodeNumberItemAttributesExceeded :: Encode NumberItemAttributesExceed
 
 -- | Constructs NumberItemAttributesExceeded from required parameters
 newNumberItemAttributesExceeded :: NumberItemAttributesExceeded
-newNumberItemAttributesExceeded  = NumberItemAttributesExceeded { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberItemAttributesExceeded  = NumberItemAttributesExceeded { "BoxUsage": Nothing }
 
 -- | Constructs NumberItemAttributesExceeded's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNumberItemAttributesExceeded' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NumberItemAttributesExceeded
-newNumberItemAttributesExceeded'  customize = (NumberItemAttributesExceeded <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberItemAttributesExceeded' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NumberItemAttributesExceeded
+newNumberItemAttributesExceeded'  customize = (NumberItemAttributesExceeded <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many attributes exist in a single call.</p>
 newtype NumberSubmittedAttributesExceeded = NumberSubmittedAttributesExceeded 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNumberSubmittedAttributesExceeded :: Newtype NumberSubmittedAttributesExceeded _
 derive instance repGenericNumberSubmittedAttributesExceeded :: Generic NumberSubmittedAttributesExceeded _
@@ -683,18 +682,18 @@ instance encodeNumberSubmittedAttributesExceeded :: Encode NumberSubmittedAttrib
 
 -- | Constructs NumberSubmittedAttributesExceeded from required parameters
 newNumberSubmittedAttributesExceeded :: NumberSubmittedAttributesExceeded
-newNumberSubmittedAttributesExceeded  = NumberSubmittedAttributesExceeded { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberSubmittedAttributesExceeded  = NumberSubmittedAttributesExceeded { "BoxUsage": Nothing }
 
 -- | Constructs NumberSubmittedAttributesExceeded's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNumberSubmittedAttributesExceeded' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NumberSubmittedAttributesExceeded
-newNumberSubmittedAttributesExceeded'  customize = (NumberSubmittedAttributesExceeded <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberSubmittedAttributesExceeded' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NumberSubmittedAttributesExceeded
+newNumberSubmittedAttributesExceeded'  customize = (NumberSubmittedAttributesExceeded <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p>Too many items exist in a single call.</p>
 newtype NumberSubmittedItemsExceeded = NumberSubmittedItemsExceeded 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeNumberSubmittedItemsExceeded :: Newtype NumberSubmittedItemsExceeded _
 derive instance repGenericNumberSubmittedItemsExceeded :: Generic NumberSubmittedItemsExceeded _
@@ -704,12 +703,12 @@ instance encodeNumberSubmittedItemsExceeded :: Encode NumberSubmittedItemsExceed
 
 -- | Constructs NumberSubmittedItemsExceeded from required parameters
 newNumberSubmittedItemsExceeded :: NumberSubmittedItemsExceeded
-newNumberSubmittedItemsExceeded  = NumberSubmittedItemsExceeded { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberSubmittedItemsExceeded  = NumberSubmittedItemsExceeded { "BoxUsage": Nothing }
 
 -- | Constructs NumberSubmittedItemsExceeded's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newNumberSubmittedItemsExceeded' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> NumberSubmittedItemsExceeded
-newNumberSubmittedItemsExceeded'  customize = (NumberSubmittedItemsExceeded <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newNumberSubmittedItemsExceeded' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> NumberSubmittedItemsExceeded
+newNumberSubmittedItemsExceeded'  customize = (NumberSubmittedItemsExceeded <<< customize) { "BoxUsage": Nothing }
 
 
 
@@ -717,7 +716,7 @@ newtype PutAttributesRequest = PutAttributesRequest
   { "DomainName" :: (String)
   , "ItemName" :: (String)
   , "Attributes" :: (ReplaceableAttributeList)
-  , "Expected" :: NullOrUndefined (UpdateCondition)
+  , "Expected" :: Maybe (UpdateCondition)
   }
 derive instance newtypePutAttributesRequest :: Newtype PutAttributesRequest _
 derive instance repGenericPutAttributesRequest :: Generic PutAttributesRequest _
@@ -727,12 +726,12 @@ instance encodePutAttributesRequest :: Encode PutAttributesRequest where encode 
 
 -- | Constructs PutAttributesRequest from required parameters
 newPutAttributesRequest :: ReplaceableAttributeList -> String -> String -> PutAttributesRequest
-newPutAttributesRequest _Attributes _DomainName _ItemName = PutAttributesRequest { "Attributes": _Attributes, "DomainName": _DomainName, "ItemName": _ItemName, "Expected": (NullOrUndefined Nothing) }
+newPutAttributesRequest _Attributes _DomainName _ItemName = PutAttributesRequest { "Attributes": _Attributes, "DomainName": _DomainName, "ItemName": _ItemName, "Expected": Nothing }
 
 -- | Constructs PutAttributesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutAttributesRequest' :: ReplaceableAttributeList -> String -> String -> ( { "DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: (ReplaceableAttributeList) , "Expected" :: NullOrUndefined (UpdateCondition) } -> {"DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: (ReplaceableAttributeList) , "Expected" :: NullOrUndefined (UpdateCondition) } ) -> PutAttributesRequest
-newPutAttributesRequest' _Attributes _DomainName _ItemName customize = (PutAttributesRequest <<< customize) { "Attributes": _Attributes, "DomainName": _DomainName, "ItemName": _ItemName, "Expected": (NullOrUndefined Nothing) }
+newPutAttributesRequest' :: ReplaceableAttributeList -> String -> String -> ( { "DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: (ReplaceableAttributeList) , "Expected" :: Maybe (UpdateCondition) } -> {"DomainName" :: (String) , "ItemName" :: (String) , "Attributes" :: (ReplaceableAttributeList) , "Expected" :: Maybe (UpdateCondition) } ) -> PutAttributesRequest
+newPutAttributesRequest' _Attributes _DomainName _ItemName customize = (PutAttributesRequest <<< customize) { "Attributes": _Attributes, "DomainName": _DomainName, "ItemName": _ItemName, "Expected": Nothing }
 
 
 
@@ -740,7 +739,7 @@ newPutAttributesRequest' _Attributes _DomainName _ItemName customize = (PutAttri
 newtype ReplaceableAttribute = ReplaceableAttribute 
   { "Name" :: (String)
   , "Value" :: (String)
-  , "Replace" :: NullOrUndefined (Boolean)
+  , "Replace" :: Maybe (Boolean)
   }
 derive instance newtypeReplaceableAttribute :: Newtype ReplaceableAttribute _
 derive instance repGenericReplaceableAttribute :: Generic ReplaceableAttribute _
@@ -750,12 +749,12 @@ instance encodeReplaceableAttribute :: Encode ReplaceableAttribute where encode 
 
 -- | Constructs ReplaceableAttribute from required parameters
 newReplaceableAttribute :: String -> String -> ReplaceableAttribute
-newReplaceableAttribute _Name _Value = ReplaceableAttribute { "Name": _Name, "Value": _Value, "Replace": (NullOrUndefined Nothing) }
+newReplaceableAttribute _Name _Value = ReplaceableAttribute { "Name": _Name, "Value": _Value, "Replace": Nothing }
 
 -- | Constructs ReplaceableAttribute's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReplaceableAttribute' :: String -> String -> ( { "Name" :: (String) , "Value" :: (String) , "Replace" :: NullOrUndefined (Boolean) } -> {"Name" :: (String) , "Value" :: (String) , "Replace" :: NullOrUndefined (Boolean) } ) -> ReplaceableAttribute
-newReplaceableAttribute' _Name _Value customize = (ReplaceableAttribute <<< customize) { "Name": _Name, "Value": _Value, "Replace": (NullOrUndefined Nothing) }
+newReplaceableAttribute' :: String -> String -> ( { "Name" :: (String) , "Value" :: (String) , "Replace" :: Maybe (Boolean) } -> {"Name" :: (String) , "Value" :: (String) , "Replace" :: Maybe (Boolean) } ) -> ReplaceableAttribute
+newReplaceableAttribute' _Name _Value customize = (ReplaceableAttribute <<< customize) { "Name": _Name, "Value": _Value, "Replace": Nothing }
 
 
 
@@ -801,7 +800,7 @@ instance encodeReplaceableItemList :: Encode ReplaceableItemList where encode = 
 
 -- | <p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>
 newtype RequestTimeout = RequestTimeout 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeRequestTimeout :: Newtype RequestTimeout _
 derive instance repGenericRequestTimeout :: Generic RequestTimeout _
@@ -811,19 +810,19 @@ instance encodeRequestTimeout :: Encode RequestTimeout where encode = genericEnc
 
 -- | Constructs RequestTimeout from required parameters
 newRequestTimeout :: RequestTimeout
-newRequestTimeout  = RequestTimeout { "BoxUsage": (NullOrUndefined Nothing) }
+newRequestTimeout  = RequestTimeout { "BoxUsage": Nothing }
 
 -- | Constructs RequestTimeout's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRequestTimeout' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> RequestTimeout
-newRequestTimeout'  customize = (RequestTimeout <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newRequestTimeout' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> RequestTimeout
+newRequestTimeout'  customize = (RequestTimeout <<< customize) { "BoxUsage": Nothing }
 
 
 
 newtype SelectRequest = SelectRequest 
   { "SelectExpression" :: (String)
-  , "NextToken" :: NullOrUndefined (String)
-  , "ConsistentRead" :: NullOrUndefined (Boolean)
+  , "NextToken" :: Maybe (String)
+  , "ConsistentRead" :: Maybe (Boolean)
   }
 derive instance newtypeSelectRequest :: Newtype SelectRequest _
 derive instance repGenericSelectRequest :: Generic SelectRequest _
@@ -833,18 +832,18 @@ instance encodeSelectRequest :: Encode SelectRequest where encode = genericEncod
 
 -- | Constructs SelectRequest from required parameters
 newSelectRequest :: String -> SelectRequest
-newSelectRequest _SelectExpression = SelectRequest { "SelectExpression": _SelectExpression, "ConsistentRead": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newSelectRequest _SelectExpression = SelectRequest { "SelectExpression": _SelectExpression, "ConsistentRead": Nothing, "NextToken": Nothing }
 
 -- | Constructs SelectRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSelectRequest' :: String -> ( { "SelectExpression" :: (String) , "NextToken" :: NullOrUndefined (String) , "ConsistentRead" :: NullOrUndefined (Boolean) } -> {"SelectExpression" :: (String) , "NextToken" :: NullOrUndefined (String) , "ConsistentRead" :: NullOrUndefined (Boolean) } ) -> SelectRequest
-newSelectRequest' _SelectExpression customize = (SelectRequest <<< customize) { "SelectExpression": _SelectExpression, "ConsistentRead": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newSelectRequest' :: String -> ( { "SelectExpression" :: (String) , "NextToken" :: Maybe (String) , "ConsistentRead" :: Maybe (Boolean) } -> {"SelectExpression" :: (String) , "NextToken" :: Maybe (String) , "ConsistentRead" :: Maybe (Boolean) } ) -> SelectRequest
+newSelectRequest' _SelectExpression customize = (SelectRequest <<< customize) { "SelectExpression": _SelectExpression, "ConsistentRead": Nothing, "NextToken": Nothing }
 
 
 
 newtype SelectResult = SelectResult 
-  { "Items" :: NullOrUndefined (ItemList)
-  , "NextToken" :: NullOrUndefined (String)
+  { "Items" :: Maybe (ItemList)
+  , "NextToken" :: Maybe (String)
   }
 derive instance newtypeSelectResult :: Newtype SelectResult _
 derive instance repGenericSelectResult :: Generic SelectResult _
@@ -854,18 +853,18 @@ instance encodeSelectResult :: Encode SelectResult where encode = genericEncode 
 
 -- | Constructs SelectResult from required parameters
 newSelectResult :: SelectResult
-newSelectResult  = SelectResult { "Items": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newSelectResult  = SelectResult { "Items": Nothing, "NextToken": Nothing }
 
 -- | Constructs SelectResult's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSelectResult' :: ( { "Items" :: NullOrUndefined (ItemList) , "NextToken" :: NullOrUndefined (String) } -> {"Items" :: NullOrUndefined (ItemList) , "NextToken" :: NullOrUndefined (String) } ) -> SelectResult
-newSelectResult'  customize = (SelectResult <<< customize) { "Items": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newSelectResult' :: ( { "Items" :: Maybe (ItemList) , "NextToken" :: Maybe (String) } -> {"Items" :: Maybe (ItemList) , "NextToken" :: Maybe (String) } ) -> SelectResult
+newSelectResult'  customize = (SelectResult <<< customize) { "Items": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>Too many attributes requested.</p>
 newtype TooManyRequestedAttributes = TooManyRequestedAttributes 
-  { "BoxUsage" :: NullOrUndefined (Number)
+  { "BoxUsage" :: Maybe (Number)
   }
 derive instance newtypeTooManyRequestedAttributes :: Newtype TooManyRequestedAttributes _
 derive instance repGenericTooManyRequestedAttributes :: Generic TooManyRequestedAttributes _
@@ -875,20 +874,20 @@ instance encodeTooManyRequestedAttributes :: Encode TooManyRequestedAttributes w
 
 -- | Constructs TooManyRequestedAttributes from required parameters
 newTooManyRequestedAttributes :: TooManyRequestedAttributes
-newTooManyRequestedAttributes  = TooManyRequestedAttributes { "BoxUsage": (NullOrUndefined Nothing) }
+newTooManyRequestedAttributes  = TooManyRequestedAttributes { "BoxUsage": Nothing }
 
 -- | Constructs TooManyRequestedAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTooManyRequestedAttributes' :: ( { "BoxUsage" :: NullOrUndefined (Number) } -> {"BoxUsage" :: NullOrUndefined (Number) } ) -> TooManyRequestedAttributes
-newTooManyRequestedAttributes'  customize = (TooManyRequestedAttributes <<< customize) { "BoxUsage": (NullOrUndefined Nothing) }
+newTooManyRequestedAttributes' :: ( { "BoxUsage" :: Maybe (Number) } -> {"BoxUsage" :: Maybe (Number) } ) -> TooManyRequestedAttributes
+newTooManyRequestedAttributes'  customize = (TooManyRequestedAttributes <<< customize) { "BoxUsage": Nothing }
 
 
 
 -- | <p> Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. </p>
 newtype UpdateCondition = UpdateCondition 
-  { "Name" :: NullOrUndefined (String)
-  , "Value" :: NullOrUndefined (String)
-  , "Exists" :: NullOrUndefined (Boolean)
+  { "Name" :: Maybe (String)
+  , "Value" :: Maybe (String)
+  , "Exists" :: Maybe (Boolean)
   }
 derive instance newtypeUpdateCondition :: Newtype UpdateCondition _
 derive instance repGenericUpdateCondition :: Generic UpdateCondition _
@@ -898,10 +897,10 @@ instance encodeUpdateCondition :: Encode UpdateCondition where encode = genericE
 
 -- | Constructs UpdateCondition from required parameters
 newUpdateCondition :: UpdateCondition
-newUpdateCondition  = UpdateCondition { "Exists": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newUpdateCondition  = UpdateCondition { "Exists": Nothing, "Name": Nothing, "Value": Nothing }
 
 -- | Constructs UpdateCondition's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateCondition' :: ( { "Name" :: NullOrUndefined (String) , "Value" :: NullOrUndefined (String) , "Exists" :: NullOrUndefined (Boolean) } -> {"Name" :: NullOrUndefined (String) , "Value" :: NullOrUndefined (String) , "Exists" :: NullOrUndefined (Boolean) } ) -> UpdateCondition
-newUpdateCondition'  customize = (UpdateCondition <<< customize) { "Exists": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newUpdateCondition' :: ( { "Name" :: Maybe (String) , "Value" :: Maybe (String) , "Exists" :: Maybe (Boolean) } -> {"Name" :: Maybe (String) , "Value" :: Maybe (String) , "Exists" :: Maybe (Boolean) } ) -> UpdateCondition
+newUpdateCondition'  customize = (UpdateCondition <<< customize) { "Exists": Nothing, "Name": Nothing, "Value": Nothing }
 

@@ -10,7 +10,7 @@ options :: Options
 
 ``` purescript
 newtype Attribute
-  = Attribute { "Name" :: String, "AlternateNameEncoding" :: NullOrUndefined (String), "Value" :: String, "AlternateValueEncoding" :: NullOrUndefined (String) }
+  = Attribute { "Name" :: String, "AlternateNameEncoding" :: Maybe (String), "Value" :: String, "AlternateValueEncoding" :: Maybe (String) }
 ```
 
 <p></p>
@@ -35,7 +35,7 @@ Constructs Attribute from required parameters
 #### `newAttribute'`
 
 ``` purescript
-newAttribute' :: String -> String -> ({ "Name" :: String, "AlternateNameEncoding" :: NullOrUndefined (String), "Value" :: String, "AlternateValueEncoding" :: NullOrUndefined (String) } -> { "Name" :: String, "AlternateNameEncoding" :: NullOrUndefined (String), "Value" :: String, "AlternateValueEncoding" :: NullOrUndefined (String) }) -> Attribute
+newAttribute' :: String -> String -> ({ "Name" :: String, "AlternateNameEncoding" :: Maybe (String), "Value" :: String, "AlternateValueEncoding" :: Maybe (String) } -> { "Name" :: String, "AlternateNameEncoding" :: Maybe (String), "Value" :: String, "AlternateValueEncoding" :: Maybe (String) }) -> Attribute
 ```
 
 Constructs Attribute's fields from required parameters
@@ -44,7 +44,7 @@ Constructs Attribute's fields from required parameters
 
 ``` purescript
 newtype AttributeDoesNotExist
-  = AttributeDoesNotExist { "BoxUsage" :: NullOrUndefined (Number) }
+  = AttributeDoesNotExist { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The specified attribute does not exist.</p>
@@ -69,7 +69,7 @@ Constructs AttributeDoesNotExist from required parameters
 #### `newAttributeDoesNotExist'`
 
 ``` purescript
-newAttributeDoesNotExist' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> AttributeDoesNotExist
+newAttributeDoesNotExist' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> AttributeDoesNotExist
 ```
 
 Constructs AttributeDoesNotExist's fields from required parameters
@@ -206,7 +206,7 @@ Constructs CreateDomainRequest's fields from required parameters
 
 ``` purescript
 newtype DeletableAttribute
-  = DeletableAttribute { "Name" :: String, "Value" :: NullOrUndefined (String) }
+  = DeletableAttribute { "Name" :: String, "Value" :: Maybe (String) }
 ```
 
 <p></p>
@@ -231,7 +231,7 @@ Constructs DeletableAttribute from required parameters
 #### `newDeletableAttribute'`
 
 ``` purescript
-newDeletableAttribute' :: String -> ({ "Name" :: String, "Value" :: NullOrUndefined (String) } -> { "Name" :: String, "Value" :: NullOrUndefined (String) }) -> DeletableAttribute
+newDeletableAttribute' :: String -> ({ "Name" :: String, "Value" :: Maybe (String) } -> { "Name" :: String, "Value" :: Maybe (String) }) -> DeletableAttribute
 ```
 
 Constructs DeletableAttribute's fields from required parameters
@@ -256,7 +256,7 @@ Encode DeletableAttributeList
 
 ``` purescript
 newtype DeletableItem
-  = DeletableItem { "Name" :: String, "Attributes" :: NullOrUndefined (DeletableAttributeList) }
+  = DeletableItem { "Name" :: String, "Attributes" :: Maybe (DeletableAttributeList) }
 ```
 
 ##### Instances
@@ -279,7 +279,7 @@ Constructs DeletableItem from required parameters
 #### `newDeletableItem'`
 
 ``` purescript
-newDeletableItem' :: String -> ({ "Name" :: String, "Attributes" :: NullOrUndefined (DeletableAttributeList) } -> { "Name" :: String, "Attributes" :: NullOrUndefined (DeletableAttributeList) }) -> DeletableItem
+newDeletableItem' :: String -> ({ "Name" :: String, "Attributes" :: Maybe (DeletableAttributeList) } -> { "Name" :: String, "Attributes" :: Maybe (DeletableAttributeList) }) -> DeletableItem
 ```
 
 Constructs DeletableItem's fields from required parameters
@@ -304,7 +304,7 @@ Encode DeletableItemList
 
 ``` purescript
 newtype DeleteAttributesRequest
-  = DeleteAttributesRequest { "DomainName" :: String, "ItemName" :: String, "Attributes" :: NullOrUndefined (DeletableAttributeList), "Expected" :: NullOrUndefined (UpdateCondition) }
+  = DeleteAttributesRequest { "DomainName" :: String, "ItemName" :: String, "Attributes" :: Maybe (DeletableAttributeList), "Expected" :: Maybe (UpdateCondition) }
 ```
 
 ##### Instances
@@ -327,7 +327,7 @@ Constructs DeleteAttributesRequest from required parameters
 #### `newDeleteAttributesRequest'`
 
 ``` purescript
-newDeleteAttributesRequest' :: String -> String -> ({ "DomainName" :: String, "ItemName" :: String, "Attributes" :: NullOrUndefined (DeletableAttributeList), "Expected" :: NullOrUndefined (UpdateCondition) } -> { "DomainName" :: String, "ItemName" :: String, "Attributes" :: NullOrUndefined (DeletableAttributeList), "Expected" :: NullOrUndefined (UpdateCondition) }) -> DeleteAttributesRequest
+newDeleteAttributesRequest' :: String -> String -> ({ "DomainName" :: String, "ItemName" :: String, "Attributes" :: Maybe (DeletableAttributeList), "Expected" :: Maybe (UpdateCondition) } -> { "DomainName" :: String, "ItemName" :: String, "Attributes" :: Maybe (DeletableAttributeList), "Expected" :: Maybe (UpdateCondition) }) -> DeleteAttributesRequest
 ```
 
 Constructs DeleteAttributesRequest's fields from required parameters
@@ -400,7 +400,7 @@ Constructs DomainMetadataRequest's fields from required parameters
 
 ``` purescript
 newtype DomainMetadataResult
-  = DomainMetadataResult { "ItemCount" :: NullOrUndefined (Int), "ItemNamesSizeBytes" :: NullOrUndefined (Number), "AttributeNameCount" :: NullOrUndefined (Int), "AttributeNamesSizeBytes" :: NullOrUndefined (Number), "AttributeValueCount" :: NullOrUndefined (Int), "AttributeValuesSizeBytes" :: NullOrUndefined (Number), "Timestamp" :: NullOrUndefined (Int) }
+  = DomainMetadataResult { "ItemCount" :: Maybe (Int), "ItemNamesSizeBytes" :: Maybe (Number), "AttributeNameCount" :: Maybe (Int), "AttributeNamesSizeBytes" :: Maybe (Number), "AttributeValueCount" :: Maybe (Int), "AttributeValuesSizeBytes" :: Maybe (Number), "Timestamp" :: Maybe (Int) }
 ```
 
 ##### Instances
@@ -423,7 +423,7 @@ Constructs DomainMetadataResult from required parameters
 #### `newDomainMetadataResult'`
 
 ``` purescript
-newDomainMetadataResult' :: ({ "ItemCount" :: NullOrUndefined (Int), "ItemNamesSizeBytes" :: NullOrUndefined (Number), "AttributeNameCount" :: NullOrUndefined (Int), "AttributeNamesSizeBytes" :: NullOrUndefined (Number), "AttributeValueCount" :: NullOrUndefined (Int), "AttributeValuesSizeBytes" :: NullOrUndefined (Number), "Timestamp" :: NullOrUndefined (Int) } -> { "ItemCount" :: NullOrUndefined (Int), "ItemNamesSizeBytes" :: NullOrUndefined (Number), "AttributeNameCount" :: NullOrUndefined (Int), "AttributeNamesSizeBytes" :: NullOrUndefined (Number), "AttributeValueCount" :: NullOrUndefined (Int), "AttributeValuesSizeBytes" :: NullOrUndefined (Number), "Timestamp" :: NullOrUndefined (Int) }) -> DomainMetadataResult
+newDomainMetadataResult' :: ({ "ItemCount" :: Maybe (Int), "ItemNamesSizeBytes" :: Maybe (Number), "AttributeNameCount" :: Maybe (Int), "AttributeNamesSizeBytes" :: Maybe (Number), "AttributeValueCount" :: Maybe (Int), "AttributeValuesSizeBytes" :: Maybe (Number), "Timestamp" :: Maybe (Int) } -> { "ItemCount" :: Maybe (Int), "ItemNamesSizeBytes" :: Maybe (Number), "AttributeNameCount" :: Maybe (Int), "AttributeNamesSizeBytes" :: Maybe (Number), "AttributeValueCount" :: Maybe (Int), "AttributeValuesSizeBytes" :: Maybe (Number), "Timestamp" :: Maybe (Int) }) -> DomainMetadataResult
 ```
 
 Constructs DomainMetadataResult's fields from required parameters
@@ -448,7 +448,7 @@ Encode DomainNameList
 
 ``` purescript
 newtype DuplicateItemName
-  = DuplicateItemName { "BoxUsage" :: NullOrUndefined (Number) }
+  = DuplicateItemName { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The item name was specified more than once. </p>
@@ -473,7 +473,7 @@ Constructs DuplicateItemName from required parameters
 #### `newDuplicateItemName'`
 
 ``` purescript
-newDuplicateItemName' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> DuplicateItemName
+newDuplicateItemName' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> DuplicateItemName
 ```
 
 Constructs DuplicateItemName's fields from required parameters
@@ -482,7 +482,7 @@ Constructs DuplicateItemName's fields from required parameters
 
 ``` purescript
 newtype GetAttributesRequest
-  = GetAttributesRequest { "DomainName" :: String, "ItemName" :: String, "AttributeNames" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (Boolean) }
+  = GetAttributesRequest { "DomainName" :: String, "ItemName" :: String, "AttributeNames" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (Boolean) }
 ```
 
 ##### Instances
@@ -505,7 +505,7 @@ Constructs GetAttributesRequest from required parameters
 #### `newGetAttributesRequest'`
 
 ``` purescript
-newGetAttributesRequest' :: String -> String -> ({ "DomainName" :: String, "ItemName" :: String, "AttributeNames" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (Boolean) } -> { "DomainName" :: String, "ItemName" :: String, "AttributeNames" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (Boolean) }) -> GetAttributesRequest
+newGetAttributesRequest' :: String -> String -> ({ "DomainName" :: String, "ItemName" :: String, "AttributeNames" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (Boolean) } -> { "DomainName" :: String, "ItemName" :: String, "AttributeNames" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (Boolean) }) -> GetAttributesRequest
 ```
 
 Constructs GetAttributesRequest's fields from required parameters
@@ -514,7 +514,7 @@ Constructs GetAttributesRequest's fields from required parameters
 
 ``` purescript
 newtype GetAttributesResult
-  = GetAttributesResult { "Attributes" :: NullOrUndefined (AttributeList) }
+  = GetAttributesResult { "Attributes" :: Maybe (AttributeList) }
 ```
 
 ##### Instances
@@ -537,7 +537,7 @@ Constructs GetAttributesResult from required parameters
 #### `newGetAttributesResult'`
 
 ``` purescript
-newGetAttributesResult' :: ({ "Attributes" :: NullOrUndefined (AttributeList) } -> { "Attributes" :: NullOrUndefined (AttributeList) }) -> GetAttributesResult
+newGetAttributesResult' :: ({ "Attributes" :: Maybe (AttributeList) } -> { "Attributes" :: Maybe (AttributeList) }) -> GetAttributesResult
 ```
 
 Constructs GetAttributesResult's fields from required parameters
@@ -546,7 +546,7 @@ Constructs GetAttributesResult's fields from required parameters
 
 ``` purescript
 newtype InvalidNextToken
-  = InvalidNextToken { "BoxUsage" :: NullOrUndefined (Number) }
+  = InvalidNextToken { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The specified NextToken is not valid. </p>
@@ -571,7 +571,7 @@ Constructs InvalidNextToken from required parameters
 #### `newInvalidNextToken'`
 
 ``` purescript
-newInvalidNextToken' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> InvalidNextToken
+newInvalidNextToken' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> InvalidNextToken
 ```
 
 Constructs InvalidNextToken's fields from required parameters
@@ -580,7 +580,7 @@ Constructs InvalidNextToken's fields from required parameters
 
 ``` purescript
 newtype InvalidNumberPredicates
-  = InvalidNumberPredicates { "BoxUsage" :: NullOrUndefined (Number) }
+  = InvalidNumberPredicates { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many predicates exist in the query expression.</p>
@@ -605,7 +605,7 @@ Constructs InvalidNumberPredicates from required parameters
 #### `newInvalidNumberPredicates'`
 
 ``` purescript
-newInvalidNumberPredicates' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> InvalidNumberPredicates
+newInvalidNumberPredicates' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> InvalidNumberPredicates
 ```
 
 Constructs InvalidNumberPredicates's fields from required parameters
@@ -614,7 +614,7 @@ Constructs InvalidNumberPredicates's fields from required parameters
 
 ``` purescript
 newtype InvalidNumberValueTests
-  = InvalidNumberValueTests { "BoxUsage" :: NullOrUndefined (Number) }
+  = InvalidNumberValueTests { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many predicates exist in the query expression.</p>
@@ -639,7 +639,7 @@ Constructs InvalidNumberValueTests from required parameters
 #### `newInvalidNumberValueTests'`
 
 ``` purescript
-newInvalidNumberValueTests' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> InvalidNumberValueTests
+newInvalidNumberValueTests' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> InvalidNumberValueTests
 ```
 
 Constructs InvalidNumberValueTests's fields from required parameters
@@ -648,7 +648,7 @@ Constructs InvalidNumberValueTests's fields from required parameters
 
 ``` purescript
 newtype InvalidParameterValue
-  = InvalidParameterValue { "BoxUsage" :: NullOrUndefined (Number) }
+  = InvalidParameterValue { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The value for a parameter is invalid.</p>
@@ -673,7 +673,7 @@ Constructs InvalidParameterValue from required parameters
 #### `newInvalidParameterValue'`
 
 ``` purescript
-newInvalidParameterValue' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> InvalidParameterValue
+newInvalidParameterValue' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> InvalidParameterValue
 ```
 
 Constructs InvalidParameterValue's fields from required parameters
@@ -682,7 +682,7 @@ Constructs InvalidParameterValue's fields from required parameters
 
 ``` purescript
 newtype InvalidQueryExpression
-  = InvalidQueryExpression { "BoxUsage" :: NullOrUndefined (Number) }
+  = InvalidQueryExpression { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The specified query expression syntax is not valid.</p>
@@ -707,7 +707,7 @@ Constructs InvalidQueryExpression from required parameters
 #### `newInvalidQueryExpression'`
 
 ``` purescript
-newInvalidQueryExpression' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> InvalidQueryExpression
+newInvalidQueryExpression' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> InvalidQueryExpression
 ```
 
 Constructs InvalidQueryExpression's fields from required parameters
@@ -716,7 +716,7 @@ Constructs InvalidQueryExpression's fields from required parameters
 
 ``` purescript
 newtype Item
-  = Item { "Name" :: String, "AlternateNameEncoding" :: NullOrUndefined (String), "Attributes" :: AttributeList }
+  = Item { "Name" :: String, "AlternateNameEncoding" :: Maybe (String), "Attributes" :: AttributeList }
 ```
 
 <p></p>
@@ -741,7 +741,7 @@ Constructs Item from required parameters
 #### `newItem'`
 
 ``` purescript
-newItem' :: AttributeList -> String -> ({ "Name" :: String, "AlternateNameEncoding" :: NullOrUndefined (String), "Attributes" :: AttributeList } -> { "Name" :: String, "AlternateNameEncoding" :: NullOrUndefined (String), "Attributes" :: AttributeList }) -> Item
+newItem' :: AttributeList -> String -> ({ "Name" :: String, "AlternateNameEncoding" :: Maybe (String), "Attributes" :: AttributeList } -> { "Name" :: String, "AlternateNameEncoding" :: Maybe (String), "Attributes" :: AttributeList }) -> Item
 ```
 
 Constructs Item's fields from required parameters
@@ -766,7 +766,7 @@ Encode ItemList
 
 ``` purescript
 newtype ListDomainsRequest
-  = ListDomainsRequest { "MaxNumberOfDomains" :: NullOrUndefined (Int), "NextToken" :: NullOrUndefined (String) }
+  = ListDomainsRequest { "MaxNumberOfDomains" :: Maybe (Int), "NextToken" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -789,7 +789,7 @@ Constructs ListDomainsRequest from required parameters
 #### `newListDomainsRequest'`
 
 ``` purescript
-newListDomainsRequest' :: ({ "MaxNumberOfDomains" :: NullOrUndefined (Int), "NextToken" :: NullOrUndefined (String) } -> { "MaxNumberOfDomains" :: NullOrUndefined (Int), "NextToken" :: NullOrUndefined (String) }) -> ListDomainsRequest
+newListDomainsRequest' :: ({ "MaxNumberOfDomains" :: Maybe (Int), "NextToken" :: Maybe (String) } -> { "MaxNumberOfDomains" :: Maybe (Int), "NextToken" :: Maybe (String) }) -> ListDomainsRequest
 ```
 
 Constructs ListDomainsRequest's fields from required parameters
@@ -798,7 +798,7 @@ Constructs ListDomainsRequest's fields from required parameters
 
 ``` purescript
 newtype ListDomainsResult
-  = ListDomainsResult { "DomainNames" :: NullOrUndefined (DomainNameList), "NextToken" :: NullOrUndefined (String) }
+  = ListDomainsResult { "DomainNames" :: Maybe (DomainNameList), "NextToken" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -821,7 +821,7 @@ Constructs ListDomainsResult from required parameters
 #### `newListDomainsResult'`
 
 ``` purescript
-newListDomainsResult' :: ({ "DomainNames" :: NullOrUndefined (DomainNameList), "NextToken" :: NullOrUndefined (String) } -> { "DomainNames" :: NullOrUndefined (DomainNameList), "NextToken" :: NullOrUndefined (String) }) -> ListDomainsResult
+newListDomainsResult' :: ({ "DomainNames" :: Maybe (DomainNameList), "NextToken" :: Maybe (String) } -> { "DomainNames" :: Maybe (DomainNameList), "NextToken" :: Maybe (String) }) -> ListDomainsResult
 ```
 
 Constructs ListDomainsResult's fields from required parameters
@@ -830,7 +830,7 @@ Constructs ListDomainsResult's fields from required parameters
 
 ``` purescript
 newtype MissingParameter
-  = MissingParameter { "BoxUsage" :: NullOrUndefined (Number) }
+  = MissingParameter { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The request must contain the specified missing parameter.</p>
@@ -855,7 +855,7 @@ Constructs MissingParameter from required parameters
 #### `newMissingParameter'`
 
 ``` purescript
-newMissingParameter' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> MissingParameter
+newMissingParameter' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> MissingParameter
 ```
 
 Constructs MissingParameter's fields from required parameters
@@ -864,7 +864,7 @@ Constructs MissingParameter's fields from required parameters
 
 ``` purescript
 newtype NoSuchDomain
-  = NoSuchDomain { "BoxUsage" :: NullOrUndefined (Number) }
+  = NoSuchDomain { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>The specified domain does not exist.</p>
@@ -889,7 +889,7 @@ Constructs NoSuchDomain from required parameters
 #### `newNoSuchDomain'`
 
 ``` purescript
-newNoSuchDomain' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NoSuchDomain
+newNoSuchDomain' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NoSuchDomain
 ```
 
 Constructs NoSuchDomain's fields from required parameters
@@ -898,7 +898,7 @@ Constructs NoSuchDomain's fields from required parameters
 
 ``` purescript
 newtype NumberDomainAttributesExceeded
-  = NumberDomainAttributesExceeded { "BoxUsage" :: NullOrUndefined (Number) }
+  = NumberDomainAttributesExceeded { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many attributes in this domain.</p>
@@ -923,7 +923,7 @@ Constructs NumberDomainAttributesExceeded from required parameters
 #### `newNumberDomainAttributesExceeded'`
 
 ``` purescript
-newNumberDomainAttributesExceeded' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NumberDomainAttributesExceeded
+newNumberDomainAttributesExceeded' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NumberDomainAttributesExceeded
 ```
 
 Constructs NumberDomainAttributesExceeded's fields from required parameters
@@ -932,7 +932,7 @@ Constructs NumberDomainAttributesExceeded's fields from required parameters
 
 ``` purescript
 newtype NumberDomainBytesExceeded
-  = NumberDomainBytesExceeded { "BoxUsage" :: NullOrUndefined (Number) }
+  = NumberDomainBytesExceeded { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many bytes in this domain.</p>
@@ -957,7 +957,7 @@ Constructs NumberDomainBytesExceeded from required parameters
 #### `newNumberDomainBytesExceeded'`
 
 ``` purescript
-newNumberDomainBytesExceeded' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NumberDomainBytesExceeded
+newNumberDomainBytesExceeded' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NumberDomainBytesExceeded
 ```
 
 Constructs NumberDomainBytesExceeded's fields from required parameters
@@ -966,7 +966,7 @@ Constructs NumberDomainBytesExceeded's fields from required parameters
 
 ``` purescript
 newtype NumberDomainsExceeded
-  = NumberDomainsExceeded { "BoxUsage" :: NullOrUndefined (Number) }
+  = NumberDomainsExceeded { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many domains exist per this account.</p>
@@ -991,7 +991,7 @@ Constructs NumberDomainsExceeded from required parameters
 #### `newNumberDomainsExceeded'`
 
 ``` purescript
-newNumberDomainsExceeded' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NumberDomainsExceeded
+newNumberDomainsExceeded' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NumberDomainsExceeded
 ```
 
 Constructs NumberDomainsExceeded's fields from required parameters
@@ -1000,7 +1000,7 @@ Constructs NumberDomainsExceeded's fields from required parameters
 
 ``` purescript
 newtype NumberItemAttributesExceeded
-  = NumberItemAttributesExceeded { "BoxUsage" :: NullOrUndefined (Number) }
+  = NumberItemAttributesExceeded { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many attributes in this item.</p>
@@ -1025,7 +1025,7 @@ Constructs NumberItemAttributesExceeded from required parameters
 #### `newNumberItemAttributesExceeded'`
 
 ``` purescript
-newNumberItemAttributesExceeded' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NumberItemAttributesExceeded
+newNumberItemAttributesExceeded' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NumberItemAttributesExceeded
 ```
 
 Constructs NumberItemAttributesExceeded's fields from required parameters
@@ -1034,7 +1034,7 @@ Constructs NumberItemAttributesExceeded's fields from required parameters
 
 ``` purescript
 newtype NumberSubmittedAttributesExceeded
-  = NumberSubmittedAttributesExceeded { "BoxUsage" :: NullOrUndefined (Number) }
+  = NumberSubmittedAttributesExceeded { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many attributes exist in a single call.</p>
@@ -1059,7 +1059,7 @@ Constructs NumberSubmittedAttributesExceeded from required parameters
 #### `newNumberSubmittedAttributesExceeded'`
 
 ``` purescript
-newNumberSubmittedAttributesExceeded' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NumberSubmittedAttributesExceeded
+newNumberSubmittedAttributesExceeded' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NumberSubmittedAttributesExceeded
 ```
 
 Constructs NumberSubmittedAttributesExceeded's fields from required parameters
@@ -1068,7 +1068,7 @@ Constructs NumberSubmittedAttributesExceeded's fields from required parameters
 
 ``` purescript
 newtype NumberSubmittedItemsExceeded
-  = NumberSubmittedItemsExceeded { "BoxUsage" :: NullOrUndefined (Number) }
+  = NumberSubmittedItemsExceeded { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many items exist in a single call.</p>
@@ -1093,7 +1093,7 @@ Constructs NumberSubmittedItemsExceeded from required parameters
 #### `newNumberSubmittedItemsExceeded'`
 
 ``` purescript
-newNumberSubmittedItemsExceeded' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> NumberSubmittedItemsExceeded
+newNumberSubmittedItemsExceeded' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> NumberSubmittedItemsExceeded
 ```
 
 Constructs NumberSubmittedItemsExceeded's fields from required parameters
@@ -1102,7 +1102,7 @@ Constructs NumberSubmittedItemsExceeded's fields from required parameters
 
 ``` purescript
 newtype PutAttributesRequest
-  = PutAttributesRequest { "DomainName" :: String, "ItemName" :: String, "Attributes" :: ReplaceableAttributeList, "Expected" :: NullOrUndefined (UpdateCondition) }
+  = PutAttributesRequest { "DomainName" :: String, "ItemName" :: String, "Attributes" :: ReplaceableAttributeList, "Expected" :: Maybe (UpdateCondition) }
 ```
 
 ##### Instances
@@ -1125,7 +1125,7 @@ Constructs PutAttributesRequest from required parameters
 #### `newPutAttributesRequest'`
 
 ``` purescript
-newPutAttributesRequest' :: ReplaceableAttributeList -> String -> String -> ({ "DomainName" :: String, "ItemName" :: String, "Attributes" :: ReplaceableAttributeList, "Expected" :: NullOrUndefined (UpdateCondition) } -> { "DomainName" :: String, "ItemName" :: String, "Attributes" :: ReplaceableAttributeList, "Expected" :: NullOrUndefined (UpdateCondition) }) -> PutAttributesRequest
+newPutAttributesRequest' :: ReplaceableAttributeList -> String -> String -> ({ "DomainName" :: String, "ItemName" :: String, "Attributes" :: ReplaceableAttributeList, "Expected" :: Maybe (UpdateCondition) } -> { "DomainName" :: String, "ItemName" :: String, "Attributes" :: ReplaceableAttributeList, "Expected" :: Maybe (UpdateCondition) }) -> PutAttributesRequest
 ```
 
 Constructs PutAttributesRequest's fields from required parameters
@@ -1134,7 +1134,7 @@ Constructs PutAttributesRequest's fields from required parameters
 
 ``` purescript
 newtype ReplaceableAttribute
-  = ReplaceableAttribute { "Name" :: String, "Value" :: String, "Replace" :: NullOrUndefined (Boolean) }
+  = ReplaceableAttribute { "Name" :: String, "Value" :: String, "Replace" :: Maybe (Boolean) }
 ```
 
 <p></p>
@@ -1159,7 +1159,7 @@ Constructs ReplaceableAttribute from required parameters
 #### `newReplaceableAttribute'`
 
 ``` purescript
-newReplaceableAttribute' :: String -> String -> ({ "Name" :: String, "Value" :: String, "Replace" :: NullOrUndefined (Boolean) } -> { "Name" :: String, "Value" :: String, "Replace" :: NullOrUndefined (Boolean) }) -> ReplaceableAttribute
+newReplaceableAttribute' :: String -> String -> ({ "Name" :: String, "Value" :: String, "Replace" :: Maybe (Boolean) } -> { "Name" :: String, "Value" :: String, "Replace" :: Maybe (Boolean) }) -> ReplaceableAttribute
 ```
 
 Constructs ReplaceableAttribute's fields from required parameters
@@ -1234,7 +1234,7 @@ Encode ReplaceableItemList
 
 ``` purescript
 newtype RequestTimeout
-  = RequestTimeout { "BoxUsage" :: NullOrUndefined (Number) }
+  = RequestTimeout { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>
@@ -1259,7 +1259,7 @@ Constructs RequestTimeout from required parameters
 #### `newRequestTimeout'`
 
 ``` purescript
-newRequestTimeout' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> RequestTimeout
+newRequestTimeout' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> RequestTimeout
 ```
 
 Constructs RequestTimeout's fields from required parameters
@@ -1268,7 +1268,7 @@ Constructs RequestTimeout's fields from required parameters
 
 ``` purescript
 newtype SelectRequest
-  = SelectRequest { "SelectExpression" :: String, "NextToken" :: NullOrUndefined (String), "ConsistentRead" :: NullOrUndefined (Boolean) }
+  = SelectRequest { "SelectExpression" :: String, "NextToken" :: Maybe (String), "ConsistentRead" :: Maybe (Boolean) }
 ```
 
 ##### Instances
@@ -1291,7 +1291,7 @@ Constructs SelectRequest from required parameters
 #### `newSelectRequest'`
 
 ``` purescript
-newSelectRequest' :: String -> ({ "SelectExpression" :: String, "NextToken" :: NullOrUndefined (String), "ConsistentRead" :: NullOrUndefined (Boolean) } -> { "SelectExpression" :: String, "NextToken" :: NullOrUndefined (String), "ConsistentRead" :: NullOrUndefined (Boolean) }) -> SelectRequest
+newSelectRequest' :: String -> ({ "SelectExpression" :: String, "NextToken" :: Maybe (String), "ConsistentRead" :: Maybe (Boolean) } -> { "SelectExpression" :: String, "NextToken" :: Maybe (String), "ConsistentRead" :: Maybe (Boolean) }) -> SelectRequest
 ```
 
 Constructs SelectRequest's fields from required parameters
@@ -1300,7 +1300,7 @@ Constructs SelectRequest's fields from required parameters
 
 ``` purescript
 newtype SelectResult
-  = SelectResult { "Items" :: NullOrUndefined (ItemList), "NextToken" :: NullOrUndefined (String) }
+  = SelectResult { "Items" :: Maybe (ItemList), "NextToken" :: Maybe (String) }
 ```
 
 ##### Instances
@@ -1323,7 +1323,7 @@ Constructs SelectResult from required parameters
 #### `newSelectResult'`
 
 ``` purescript
-newSelectResult' :: ({ "Items" :: NullOrUndefined (ItemList), "NextToken" :: NullOrUndefined (String) } -> { "Items" :: NullOrUndefined (ItemList), "NextToken" :: NullOrUndefined (String) }) -> SelectResult
+newSelectResult' :: ({ "Items" :: Maybe (ItemList), "NextToken" :: Maybe (String) } -> { "Items" :: Maybe (ItemList), "NextToken" :: Maybe (String) }) -> SelectResult
 ```
 
 Constructs SelectResult's fields from required parameters
@@ -1332,7 +1332,7 @@ Constructs SelectResult's fields from required parameters
 
 ``` purescript
 newtype TooManyRequestedAttributes
-  = TooManyRequestedAttributes { "BoxUsage" :: NullOrUndefined (Number) }
+  = TooManyRequestedAttributes { "BoxUsage" :: Maybe (Number) }
 ```
 
 <p>Too many attributes requested.</p>
@@ -1357,7 +1357,7 @@ Constructs TooManyRequestedAttributes from required parameters
 #### `newTooManyRequestedAttributes'`
 
 ``` purescript
-newTooManyRequestedAttributes' :: ({ "BoxUsage" :: NullOrUndefined (Number) } -> { "BoxUsage" :: NullOrUndefined (Number) }) -> TooManyRequestedAttributes
+newTooManyRequestedAttributes' :: ({ "BoxUsage" :: Maybe (Number) } -> { "BoxUsage" :: Maybe (Number) }) -> TooManyRequestedAttributes
 ```
 
 Constructs TooManyRequestedAttributes's fields from required parameters
@@ -1366,7 +1366,7 @@ Constructs TooManyRequestedAttributes's fields from required parameters
 
 ``` purescript
 newtype UpdateCondition
-  = UpdateCondition { "Name" :: NullOrUndefined (String), "Value" :: NullOrUndefined (String), "Exists" :: NullOrUndefined (Boolean) }
+  = UpdateCondition { "Name" :: Maybe (String), "Value" :: Maybe (String), "Exists" :: Maybe (Boolean) }
 ```
 
 <p> Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. </p>
@@ -1391,7 +1391,7 @@ Constructs UpdateCondition from required parameters
 #### `newUpdateCondition'`
 
 ``` purescript
-newUpdateCondition' :: ({ "Name" :: NullOrUndefined (String), "Value" :: NullOrUndefined (String), "Exists" :: NullOrUndefined (Boolean) } -> { "Name" :: NullOrUndefined (String), "Value" :: NullOrUndefined (String), "Exists" :: NullOrUndefined (Boolean) }) -> UpdateCondition
+newUpdateCondition' :: ({ "Name" :: Maybe (String), "Value" :: Maybe (String), "Exists" :: Maybe (Boolean) } -> { "Name" :: Maybe (String), "Value" :: Maybe (String), "Exists" :: Maybe (Boolean) }) -> UpdateCondition
 ```
 
 Constructs UpdateCondition's fields from required parameters
